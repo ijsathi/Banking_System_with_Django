@@ -19,6 +19,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS=['127.0.0.1', '0.0.0.0']
+CSRF_TRUSTED_ORIGINS = ['https://banking-system-neks.onrender.com/']
 
 
 # Application definition
