@@ -7,6 +7,9 @@ from django.shortcuts import redirect
 from django.views import View
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 
 # Create your views here.
 class UserRegistrationView(FormView):
@@ -49,3 +52,14 @@ class CustomPasswordChangeView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'accounts/password_change.html'
     success_message = "Your password was successfully updated!"
     success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.send_password_change_email()
+        return response
+
+    def send_password_change_email(self):
+        user = self.request.user
+        subject = 'Password Change Notification'
+        message = render_to_string('accounts/password_change_email.html', {'user': user})
+        send_mail(subject, '', settings.DEFAULT_FROM_EMAIL, [user.email], html_message=message)
