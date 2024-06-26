@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'Banking_System.wsgi.application'
 #     }
 # }
 
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': env('DB_NAME'),
@@ -86,15 +86,15 @@ DATABASES = {
         'HOST': env('DB_HOST'),
         'PORT': env('DB_PORT'),
     }
-}
+} """
 
-""" # Replace the SQLite DATABASES configuration with PostgreSQL:
+# Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
         default='postgresql://banking_system_user:KO46waQqvHBZ3fcNo26seDHiFcFoEu7Y@dpg-cptpf3t2ng1s73e4k3lg-a.oregon-postgres.render.com/banking_system'
     )
-} """
+}
 
 
 
