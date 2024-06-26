@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div>
+        <h1>Transaction Successful!</h1>
+        <p>Your transaction has been processed successfully.</p>
+        <!-- You can include additional details here if needed -->
+        <p><a href="{% url 'transaction_report' %}">View Transaction Report</a></p>
+    </div>
+{% endblock %}
